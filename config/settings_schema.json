@@ -199,5 +199,35 @@
         "default": "@"
       }
     ]
+  },
+	{
+    "name": "ENJOY Color Attributes",
+    "settings": [
+      {
+        "type": "text",
+        "id": "midnight_attribute",
+        "label": "Midnight"
+      },
+			{
+        "type": "text",
+        "id": "ruby_attribute",
+        "label": "Ruby"
+      },
+			{
+        "type": "text",
+        "id": "cherry_attribute",
+        "label": "Cherry"
+      },
+			{
+        "type": "text",
+        "id": "cobalt_attribute",
+        "label": "Cobalt"
+      },
+			{
+        "type": "text",
+        "id": "indigo_attribute",
+        "label": "Indigo"
+      }
+    ]
   }
 ]

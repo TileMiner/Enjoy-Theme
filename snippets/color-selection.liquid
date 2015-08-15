@@ -1,0 +1,18 @@
+<!-- /snippets/color-selection.liquid -->
+
+<div><h4 class="text-center">Choose Your Intention</h4><hr class="hr--small"></div>
+	{% for variant in product.variants %}
+		<a href="{{ variant.url }}">
+			<div class="grid grid--table">
+				<div class="grid__item one-half colorName">
+					<h3>{{ variant.title }}</h3>
+					<h4>Property</h4>
+				</div>
+				<div class="grid__item colorVariant one-half background-color{{ variant.title }}">
+					{% if product.selected_or_first_available_variant == variant %}
+						<img src="{{ 'check.svg' | asset_url }}" >
+					{% endif %}
+				</div>
+			</div>
+		</a>
+	{% endfor %}

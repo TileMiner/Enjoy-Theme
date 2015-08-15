@@ -98,16 +98,58 @@ $colorLinkHover: lighten($colorPrimary, 15%);
 
 // Text colors
 $colorTextBody: {{ settings.color_body_text }};
+$colorSelectorGray: #A7A9AC;
+$colorSelectorDark: #58595B;
+
+//Enjoy colors
+$colorMidnight: #0E1926;
+$colorRuby: #661415;
+$colorCherry: #CC2728;
+$colorCobalt: #396EAD;
+$colorIndigo: #5F509A;
+
+.text-colorMidnight {
+	color: $colorMidnight;
+}
+.text-colorRuby {
+	color: $colorRuby;
+}
+.text-colorCherry {
+	color: $colorCherry;
+}
+.text-colorCobalt {
+	color: $colorCobalt;
+}
+.text-colorIndigo {
+	color: $colorIndigo;
+}
+
+.background-colorMidnight {
+	background-color: $colorMidnight;
+}
+.background-colorRuby {
+	background-color: $colorRuby;
+}
+.background-colorCherry {
+	background-color: $colorCherry;
+}
+.background-colorCobalt {
+	background-color: $colorCobalt;
+}
+.background-colorIndigo {
+	background-color: $colorIndigo;
+}
 
 // Backgrounds
 $colorBody: {{ settings.color_body_bg }};
+$colorBookBackground: #E6E7E8;
 
 // Border colors
 $colorBorder: {{ settings.color_borders }};
 
 // Nav and dropdown link background
-$colorNav: #f2f2f2;
-$colorNavText: #333;
+$colorNav: #ffffff;
+$colorNavText: #7F7F7F;
 
 // Site Footer
 $colorFooterBg: {{ settings.color_footer_bg }};
@@ -124,6 +166,7 @@ $successGreenBg: #ecfef0;
 // Drawers
 $drawerNavWidth: 300px;
 $drawerCartWidth: 300px;
+$colorSelectWidth: 300px;
 $colorDrawers: #f6f6f6;
 $colorDrawerBorder: darken($colorDrawers, 5%);
 $colorDrawerText: #333;
@@ -138,14 +181,41 @@ $radius: 3px;
 // Z-index
 $zindexNavDropdowns: 5;
 $zindexDrawer: 10;
+$zindexOverlay: 9;
 
 /*================ Typography ================*/
 
-$headerFontStack: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$headerFontWeight: 700;
+@font-face {
+  font-family: 'cocomat';
+  src: url('{{ "Cocomat Ultralight.ttf" | asset_url }}') format("truetype");
+	font-weight: 100;
+}
+@font-face {
+  font-family: 'cocomat';
+  src: url('{{ "Cocomat Light.ttf" | asset_url }}') format("truetype");
+	font-weight: 200;
+}
+@font-face {
+  font-family: 'cocomat';
+  src: url('{{ "Cocomat Regular.ttf" | asset_url }}') format("truetype");
+	font-weight: 400;
+}
+@font-face {
+  font-family: 'cocomat';
+  src: url('{{ "Cocomat Bold.ttf" | asset_url }}') format("truetype");
+	font-weight: 700;
+}
+@font-face {
+  font-family: 'cocomat';
+  src: url('{{ "Cocomat Heavy.ttf" | asset_url }}') format("truetype");
+	font-weight: 800;
+}
+$headerFontStack: cocomat;
+$headerFontWeight: 200;
 
-$bodyFontStack: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$baseFontSize: 14px; // Henseforth known as 1em
+$bodyFontStack: cocomat;
+$bodyFontWeight: 200;
+$baseFontSize: 16px; // Henseforth known as 1em
 
 @font-face {
   font-family: 'icons';
@@ -323,7 +393,17 @@ $pull:               false;
 .grid__item.clear {
   clear: both;
 }
+.grid--table {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
 
+	> .grid__item {
+		float: none;
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
 $class-type: unquote(".");
 
 @if $use-silent-classes == true {
@@ -777,7 +857,7 @@ select {
   line-height: 1.6;
   font-family: $bodyFontStack;
   color: $colorTextBody;
-  font-weight: 300;
+  font-weight: $bodyFontWeight;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
 }
@@ -785,8 +865,7 @@ select {
 h1, h2, h3, h4, h5, h6 {
   display: block;
   font-family: $headerFontStack;
-  font-weight: $headerFontWeight;
-  margin: 0 0 0.5em;
+  margin: 0;
   line-height: 1.4;
 
   a {
@@ -794,22 +873,29 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: inherit;
   }
 }
+.secondary {
+	color: $colorSecondary;
+}
 
 /*================ Use em() Sass function to declare font-size ================*/
 h1 {
   font-size: em(36px);
+	font-weight: 400;
 }
 
 h2 {
   font-size: em(28px);
+	font-weight: 200;
 }
 
 h3 {
-  font-size: em(22px);
+  font-size: em(28px);
+	font-weight: 100;
 }
 
 h4 {
   font-size: em(20px);
+	font-weight: 100;
 }
 
 h5 {
@@ -888,21 +974,7 @@ blockquote {
   }
 }
 
-/*================ Code ================*/
-code, pre {
-  background-color: #faf7f5;
-  font-family: Consolas,monospace;
-  font-size: 1em;
-  border: 0 none;
-  padding: 0 2px;
-  color: #51ab62;
-}
 
-pre {
-  overflow: auto;
-  padding: $gutter / 2;
-  margin: 0 0 $gutter;
-}
 
 /*================ Horizontal Rules ================*/
 hr {
@@ -1075,7 +1147,7 @@ html input[disabled] {
   width: auto;
   margin: 0;
   line-height: 1.42;
-  font-weight: bold;
+  font-weight: 200;
   text-decoration: none;
   text-align: center;
   vertical-align: middle;
@@ -1791,11 +1863,6 @@ label.error {
   }
 }
 
-.site-header__logo-link {
-  max-width: 450px; // max upload size
-  margin: 0 auto;
-}
-
 .site-header__cart-toggle {
   display: inline-block;
 }
@@ -1815,28 +1882,110 @@ label.error {
     margin-right: auto;
   }
 }
+/*============================================================================
+  #Homepage Sections
+==============================================================================*/
+.hero {
+	text-align: center;
+}
+.hero-tag {
+	margin-top: 30px;
+	font-size: 2em;
+	font-weight: 100;
+}
+.hero-img {
+	margin-top: 50px;
+	img {
+		width: 350px;
+	}
+}
+.hero-selector {
+	font-weight: 200;
+	color: $colorSecondary;
+	font-size: 1.5em;
+	a {
+		padding: 0px;
+		display: inline-block;
+		border-bottom: 1px dotted black;
+		line-height: 1em;
+	}
+	img {
+		vertical-align:bottom;
+		padding-bottom: 4px;
+	}
+	.hero-product {
+		color: $colorSecondary;
+	}
+}
+.hero-buy-box {
+	margin-top: 50px;
+}
+.button-spacer {
+	display: inline-block;
+	margin-left: 30px;
+}
+.book-section {
+	margin-top: 50px;
+	background-color: $colorBookBackground;
+	color: #58595B;
+}
+
+.homepage-section {
+	padding: 75px 0px 75px 0px;
+	h1 {
+		font-size: 2em;
+		font-weight: 100;
+		line-height: 1em;
+	}
+	h2 {
+		padding-bottom: 15px;
+	}
+	h3 {
+		font-size: 2em;
+		font-weight: 100;
+		line-height: 1em;
+	}
+}
+.featured-image {
+	padding-right: 20px;
+}
+
 
 /*============================================================================
   #Site Nav and Dropdowns
 ==============================================================================*/
 .nav-bar {
+	margin-top: 15px;
   background-color: $colorNav;
+
+  .grid--table {
+    display: table;
+    table-layout: fixed;
+    #width: 100%;
+
+    > .grid__item {
+      float: none;
+      display: table-cell;
+      vertical-align: middle;
+			text-align: center;
+    }
+		> .site-nav__icon {
+			width: auto;
+		}
+		.site-nav__link {
+
+			padding: 0;
+			color: $colorNavText;
+			border-bottom: 1px dotted $colorNavText;
+			display: inline;	
+		}
+  }
 }
 
-.site-nav {
-  font-size: em(16px);
-  cursor: default;
-  margin: 0 0 0 (-$gutter / 2);
 
-  li {
-    margin: 0;
-    display: block;
-  }
-
-  > li {
-    position: relative;
-    display: inline-block;
-  }
+.site-nav__logo-link {
+  max-width: 150px;
+  margin: 0 auto;
 }
 
 /*================ Home to hamburger and cart that toggle drawers ================*/
@@ -1869,7 +2018,7 @@ label.error {
   }
 
   .site-nav--active > & {
-    font-weight: bold;
+    font-weight: 400;
   }
 
   .site-nav--mobile & {
@@ -2079,11 +2228,12 @@ label.error {
   }
 }
 
+
 .drawer--left {
   width: $drawerNavWidth;
   left: -$drawerNavWidth;
   border-right: 1px solid $colorDrawerBorder;
-
+	
   .js-drawer-open-left & {
     display: block;
     @include transform(translateX($drawerNavWidth));
@@ -2161,6 +2311,66 @@ label.error {
     background-color: darken($colorDrawers, 5%);
   }
 }
+/*============================================================================
+  #Color Selection
+==============================================================================*/
+.colorSelect {
+	width: $colorSelectWidth;
+	right: -$colorSelectWidth;
+	border-left: 1px solid $colorDrawerBorder;
+	position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  top: 0;
+  bottom: 0;
+  padding: 0 ($gutter / 2) ($gutter / 2);
+  max-width: 95%;
+  z-index: $zindexDrawer;
+  color: $colorDrawerText;
+	background-color: white;
+	transition: $drawerTransition;
+	&.open {
+		@include transform(translateX(-100%));
+	}
+	.grid {
+		margin-bottom: 20px;
+	}
+	a {
+		color: $colorMidnight; 
+	}
+	h3 {
+		font-weight: 500;
+	}
+	h4 {
+		font-size: 1em;
+		font-weight: 500;
+	}
+	.grid {
+		margin-left: 0px;
+	}
+	.colorName {
+		text-align: right;
+		padding: 0px 20px 0px 0px;
+	}
+}
+.selectOverlay {
+	z-index: $zindexOverlay;
+	position: fixed;
+	top: 0;
+	transition: background-color 0.4s ease;
+	&.enabled {
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0,0,0,0.17);
+	}
+}
+.colorVariant {
+	width: 132px;
+	height: 132px;
+	border-radius: 50%;
+}
+
 
 /*============================================================================
   #Site Footer

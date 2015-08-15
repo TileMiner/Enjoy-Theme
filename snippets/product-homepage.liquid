@@ -1,0 +1,55 @@
+<!-- /snippets/product-hero.liquid -->
+{% unless product %}
+	{% assign product = collections.frontpage.products.first %}
+{% endunless %}
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<div itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
+	<div class="wrapper">
+		<div class="grid hero">
+			<div class="grid__item hero-tag"><span>It's time you enjoyed meditation</span></div>
+			<div class="grid__item hero-img"><img src="{{ current_variant | img_url: 'large' }}" /></div>
+			<div class="grid__item hero-selector">
+				<span>The </span>
+				<a href="#">
+					<span class="hero-product">{{ product.title | downcase }}</span> 
+					<span><img src="{{ 'drop-down.svg' | asset_url }}"></span>
+				</a>
+				<span> in </span>
+				<a href="#" id="open-color-selector">
+					<span class="color{{ current_variant.title | remove: " " }}">{{ current_variant.title | downcase }}</span> 
+					<span><img src="{{ 'drop-down.svg' | asset_url }}"></span>
+				</a>
+			</div>
+			<div class="grid__item">
+				<span class="secondary">Available now for {{ current_variant.price | money }}</span>
+			</div>
+			<div class="grid__item hero-buy-box">
+				<form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" >
+					<input type="hidden" name="id" id="productSelect" value="{{ current_variant.id }}">
+					<button type="submit" name="add" id="AddToCart" class="btn">
+						<span id="AddToCartText">Buy Now</span>
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="book-section homepage-section">
+	<div class="wrapper">
+		<div class="grid grid--table">
+			<div class="grid__item one-third"><img src="{{ 'EnjoyBook.png' | asset_url }}" class="featured-image"/></div>
+			<div class="grid__item two-thirds">
+				<div class="grid">
+					<div class="grid__item"><h2>ENJOY’s support of your meditation doesn’t stop with our legendary cushions.</h2>
+					</div>
+					<div class="grid__item"><h3>Each cushion order includes a book of techniques and inspiration written by Tarthang Tulku Rinpoche.</span></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

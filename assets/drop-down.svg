@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+<g display="none">
+	<path display="inline" d="M3.936,7.01C3.859,6.921,3.82,6.827,3.82,6.727c0-0.095,0.039-0.18,0.115-0.257l0.159-0.159
+		c0.077-0.089,0.169-0.133,0.274-0.133c0.118,0,0.216,0.038,0.293,0.115l3.426,3.426l3.426-3.426
+		c0.041-0.042,0.087-0.071,0.138-0.089c0.05-0.018,0.102-0.029,0.154-0.035C11.854,6.175,11.9,6.185,11.947,6.2
+		c0.048,0.015,0.092,0.045,0.133,0.093l0.133,0.15c0.036,0.041,0.066,0.085,0.094,0.133c0.026,0.047,0.039,0.101,0.039,0.159
+		c0,0.112-0.035,0.204-0.105,0.274l-3.878,3.878c-0.095,0.094-0.189,0.142-0.283,0.142c-0.077,0-0.15-0.036-0.222-0.106L3.936,7.01z
+		"/>
+</g>
+<g>
+	<path fill="#59595B" d="M11,1c2.206,0,4,1.794,4,4v6c0,2.206-1.794,4-4,4H5c-2.206,0-4-1.794-4-4V5c0-2.206,1.794-4,4-4H11 M11,0H5
+		C2.25,0,0,2.25,0,5v6c0,2.75,2.25,5,5,5h6c2.75,0,5-2.25,5-5V5C16,2.25,13.75,0,11,0L11,0z"/>
+</g>
+<polyline fill="none" stroke="#59595B" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="12,6 8,10 
+	4,6 "/>
+</svg>
